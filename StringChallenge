@@ -1,27 +1,40 @@
-/*my solution :
-                - Used an array to add each row of characters as one member of this array for example : (safato,2)  -> array {"sft","aao"}
-                - finaly print that array
 
- */
- 
+
+import java.util.Arrays;
+
 public class StringChallenge {
     public static void main(String[] args) {
-        divideString("SAFATO", 3);
+        sortString("SAFATO", 3);
     }
 
-    static void divideString(String str, int n) {
+    //-----------------------------------------------------------------
+    static void sortString(String str, int n) {
         if (n == 1)
             System.out.print(str);
         else {
+            ArrayValu[] arr = new ArrayValu[6];
+            arr[0] = new ArrayValu("", 0);
+            arr[1] = new ArrayValu("", 0);
+            arr[2] = new ArrayValu("", 0);
+            arr[3] = new ArrayValu("", 0);
+            arr[4] = new ArrayValu("", 0);
+            arr[5] = new ArrayValu("", 0);
+
+
             int lengthSTR = str.length();
             char[] charArray = str.toCharArray();
             String[] finalArray = new String[n];
-            Arrays.fill(finalArray, ""); 
+            Arrays.fill(finalArray, "");
             int line = 0;
-            boolean move = true; //true means move down ,false means move up 
+            boolean move = true;
 
             for (int i = 0; i < lengthSTR; ++i) {
-                finalArray[line] += (charArray[i]);
+            finalArray[line] += charArray[i];
+               
+                arr[line].str = addSpaces(i-arr[line].value, arr[line].str, Character.toString(charArray[i]));
+                arr[line].value = i;
+
+
                 if (line == n - 1)
                     move = false;
                 else if (line == 0)
@@ -35,6 +48,28 @@ public class StringChallenge {
 
             for (int i = 0; i < n; ++i)
                 System.out.print(finalArray[i]);
+
+            for (int j = 0; j < n; j++)
+                System.out.print("\n" + arr[j].str);
+        }
+    }
+    //-----------------------------------------------------------------
+   static String addSpaces(int j, String strBefore, String strAfter) {
+        String b="";
+        
+        for (int i = 0; i <j; i++)
+            b +=" ";
+        return strBefore + b + strAfter;
+    }
+    //-----------------------------------------------------------------
+
+    public static class ArrayValu {
+        int value;
+        String str;
+
+        public ArrayValu(String str, int value) {
+            this.value = value;
+            this.str = str;
         }
     }
 }
