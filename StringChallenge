@@ -16,9 +16,9 @@ public class StringChallenge {
             int lengthSTR = str.length();
             char[] charArray = str.toCharArray();
             String[] finalArray = new String[n];
-            Arrays.fill(finalArray, "");
+            Arrays.fill(finalArray, ""); 
             int line = 0;
-            boolean move = true;
+            boolean move = true; //true means move down ,false means move up 
 
             for (int i = 0; i < lengthSTR; ++i) {
                 finalArray[line] += (charArray[i]);
