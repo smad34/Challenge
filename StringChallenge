@@ -1,0 +1,40 @@
+/*my solution :
+                - created an array to add each row in one member of this array
+                - example : (safato,2)  -> array {"SFT","AAO"}
+                - finaly print the array
+
+ */
+public class StringChallenge {
+    public static void main(String[] args) {
+        divideString("SAFATO", 3);
+    }
+
+    static void divideString(String str, int n) {
+        if (n == 1)
+            System.out.print(str);
+        else {
+            int lengthSTR = str.length();
+            char[] charArray = str.toCharArray();
+            String[] finalArray = new String[n];
+            Arrays.fill(finalArray, "");
+            int line = 0;
+            boolean move = true;
+
+            for (int i = 0; i < lengthSTR; ++i) {
+                finalArray[line] += (charArray[i]);
+                if (line == n - 1)
+                    move = false;
+                else if (line == 0)
+                    move = true;
+
+                if (move)
+                    line++;
+                else
+                    line--;
+            }
+
+            for (int i = 0; i < n; ++i)
+                System.out.print(finalArray[i]);
+        }
+    }
+}
