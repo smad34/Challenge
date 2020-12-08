@@ -1,9 +1,9 @@
 /*my solution :
-                - created an array to add each row in one member of this array
-                - example : (safato,2)  -> array {"SFT","AAO"}
-                - finaly print the array
+                - Used an array to add each row of characters as one member of this array for example : (safato,2)  -> array {"sft","aao"}
+                - finaly print that array
 
  */
+ 
 public class StringChallenge {
     public static void main(String[] args) {
         divideString("SAFATO", 3);
