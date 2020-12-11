@@ -1,10 +1,8 @@
-
-
 import java.util.Arrays;
 
 public class StringChallenge {
     public static void main(String[] args) {
-        sortString("SAFATO", 3);
+        sortString("SafatoAmooJunSafato", 4);
     }
 
     //-----------------------------------------------------------------
@@ -12,26 +10,27 @@ public class StringChallenge {
         if (n == 1)
             System.out.print(str);
         else {
-            ArrayValu[] arr = new ArrayValu[6];
-            arr[0] = new ArrayValu("", 0);
-            arr[1] = new ArrayValu("", 0);
-            arr[2] = new ArrayValu("", 0);
-            arr[3] = new ArrayValu("", 0);
-            arr[4] = new ArrayValu("", 0);
-            arr[5] = new ArrayValu("", 0);
-
-
+            ArrayValue[] arr = new ArrayValue[n];
+            for (int i=0;i<n;i++)
+                arr[i]=new ArrayValue("", 0);
+            
+    
             int lengthSTR = str.length();
             char[] charArray = str.toCharArray();
             String[] finalArray = new String[n];
             Arrays.fill(finalArray, "");
             int line = 0;
             boolean move = true;
+            int space =  0;
 
             for (int i = 0; i < lengthSTR; ++i) {
             finalArray[line] += charArray[i];
-               
-                arr[line].str = addSpaces(i-arr[line].value, arr[line].str, Character.toString(charArray[i]));
+                if(i>=n)
+                  space = i-arr[line].value -1;
+                 else 
+                  space =i-arr[line].value;
+        
+                arr[line].str = addSpaces(space, arr[line].str, Character.toString(charArray[i]));
                 arr[line].value = i;
 
 
@@ -56,18 +55,19 @@ public class StringChallenge {
     //-----------------------------------------------------------------
    static String addSpaces(int j, String strBefore, String strAfter) {
         String b="";
-        
+       
+       
         for (int i = 0; i <j; i++)
             b +=" ";
         return strBefore + b + strAfter;
     }
     //-----------------------------------------------------------------
 
-    public static class ArrayValu {
+    public static class ArrayValue {
         int value;
         String str;
 
-        public ArrayValu(String str, int value) {
+        public ArrayValue(String str, int value) {
             this.value = value;
             this.str = str;
         }
